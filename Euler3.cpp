@@ -1,39 +1,39 @@
 #include <iostream>
-#include <vector>
-//#include <math>
+#include <cmath>
 
-bool etoFactor(int chislo){
-  int i = 0;
-  bool otwet = 0;
-  while (i<chislo) {
-    if (chislo%i!=0) {
-      otwet = i;
-    }
-    i++;
-  }
-  return otwet;
-}
-
-std::vector<int> osnFactor(std::vector<int> v, int chislo){
-  if (v.size()==0) {
-    v.push_back(2);
+bool etoFactor(long long chislo){
+  if (chislo<2) {
+    return false;
   }else{
-    int i = 0;
-    while (v.back()<sqrt(chislo) && i<chislo) {
-      if (etoFactor(i)) {
-        v.push_back(i);
+    int i = 2;
+    while (i<chislo) {
+      if (chislo%i==0) {
+        return false;
       }
       i++;
     }
+    return true;
   }
-  return v;
 }
 
+long long welikijFaktor(long long chislo){
+  long long i = 1;
+  long long faktor = 0;
+  while (i<sqrt(chislo)) {
+    if (chislo%i==0 && etoFactor(i)) {
+      faktor = i;
+      std::cout << "["<<i<<"]";
+    }
+    i++;
+  }
+  std::cout  << '\n';
+  return faktor;
+}
 
-int main(int argc, char const *argv[]) {
-  int chislo;
-  std::cout << "Ведите число которое считаете основным фактором " << '\n';
+int main() {
+  long long chislo;
+  std::cout << "Ведите число " << '\n';
   std::cin >> chislo;
-  std::cout << "Ответ " <<etoFactor(chislo)<< '\n';
+  std::cout << "Ответ " <<welikijFaktor(chislo)<< '\n';
   return 0;
 }
