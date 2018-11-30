@@ -1,8 +1,21 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-void showVector(std::vector<long int> v) {
-  /* code */
+void showVector(std::vector<int> v) {
+  if (v.size()==0) {
+    std::cout << "NULL" << '\n';
+  }else{
+    std::cout << "Наш вектор:  " << '\n';
+    int i = 1;
+    std::cout << "["<< v[0]<< "]";
+    while (i<v.size()) {
+      std::cout << ", [" << v[i]<<" (" <<etoFactor(v[i]) << ")"<< "]";
+      i++;
+    }
+    std::cout << '\n';
+  }
+}
+void showVectorLong(std::vector<long int> v) {
   if (v.size()==0) {
     std::cout << "NULL" << '\n';
   }else{
@@ -45,4 +58,32 @@ std::vector<long int> osnFactor(std::vector<long int> v, int chislo){
     i++;
   }
   return vFactor;
+}
+bool etoFactor(long long chislo){
+  if (chislo<2) {
+    return false;
+  }else{
+    int i = 2;
+    while (i<chislo) {
+      if (chislo%i==0) {
+        return false;
+      }
+      i++;
+    }
+    return true;
+  }
+}
+bool isPrime(int chislo){
+  if (chislo<2) {
+    return false;
+  }else{
+    int i = 2;
+    while (i<chislo) {
+      if (chislo%i==0) {
+        return false;
+      }
+      i++;
+    }
+    return true;
+  }
 }
