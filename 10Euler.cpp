@@ -1,9 +1,9 @@
 #include <iostream>
 #include "aux.h"
 
-int summaFak(int predel){
+long int summaFak(int predel){
   int i = 0;
-  int sum = 0;
+  long int sum = 0;
   while (i<predel) {
     if (etoFactor(i)) {
       sum+=i;
